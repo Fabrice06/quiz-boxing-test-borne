@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+
+    <script src="./bootstrap/js/bootstrap.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        let socket = io();
+        socket.on('change_header', function(data) {
+            document.getElementById('header').innerHTML = data.header;
+        });
+    });
+
+    function shutdown() {
+        console.log('shutdown');
+        let socket = io.connect('http://localhost:8050');
+        socket.emit('shutdown');
+    }
+</script>
+</head>
+<body class="home">
+
+    <header id="head">
+		<div class="container">
+			<div class="row">
+				<h1 class="lead">TEST BORNES</h1>
+				<p class="tagline">Pensez à cliquez sur les boutons afin de vérifier la gauche et la droite</p>
+				<p><a class="btn btn-default btn-lg disabled bouton gros" role="button" id="header">BOUTON</a></p>
+			</div>
+		</div>
+    </header>
+
+
+    <footer id="footer" class="top-space">
+
+        <div class="footer1">
+            <div class="container">
+                <div class="row">
+                    
+                    <div class="col-md-3 widget">
+                        
+                    </div>
+
+                    <div class="col-md-6 widget">
+                        <div class="row justify-content-md-center">
+                                <button onclick="shutdown()" type="button" class="btn btn-danger btn-lg btn-block gros" >Eteindre</button>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 widget">
+                    
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="footer2">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-md-6 widget"></div>
+                    
+
+                    <div class="col-md-6 widget">
+                        <div class="widget-body">
+                            <p class="text-right">
+                                Copyright &copy; 2020, Quiz Boxing, Designed by EMYSPHERE
+                            </p>
+                        </div>
+                    </div>
+
+                </div> 
+            </div>
+        </div>
+
+    </footer>	
+        
+
+</body>
+</html>

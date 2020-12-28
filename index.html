@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="./bootstrap/css/bootstrap.min.css">
+    <script src="./bootstrap/js/bootstrap.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        let socket = io();
+        socket.on('change_header', function(data) {
+            document.getElementById('header').innerHTML = data.header;
+        });
+    });
+
+    function shutdown() {
+        console.log('shutdown');
+        let socket = io.connect('http://localhost:8050');
+        socket.emit('shutdown');
+    }
+</script>
+</head>
+<body>
+
+    <div class="container-fluid">
+
+        <div class="row justify-content-md-center">
+
+            <h1>TEST DES BORNES FIN</h1>
+
+            <br>
+            <br>
+
+            <div class="row justify-content-md-center">
+                <p class="text-center" >
+                    <h1 id="header">
+                        BOUTON
+                    </h1>
+                </p>    
+            </div>
+
+            
+
+            
+        </div>
+
+        <div class="row justify-content-md-center">
+
+            <br>
+            <br>
+
+            <button onclick="shutdown()" type="button" class="btn btn-danger btn-lg btn-block">Danger</button>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
