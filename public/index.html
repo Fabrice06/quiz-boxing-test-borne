@@ -21,6 +21,13 @@
         let socket = io.connect('http://localhost:8050');
         socket.emit('shutdown');
     }
+
+    function S(val) {
+        console.log(val);
+        let socket = io.connect('http://localhost:8050');
+        socket.emit(val);
+    }
+
 </script>
 </head>
 <body class="home">
@@ -31,7 +38,18 @@
 				<h1 class="lead">TEST BORNES</h1>
 				<p class="tagline">Pensez à cliquez sur les boutons afin de vérifier la gauche et la droite</p>
 				<p><a class="btn btn-default btn-lg disabled bouton gros" role="button" id="header">BOUTON</a></p>
-			</div>
+            </div>
+            
+            <div class="row">
+				<br>
+                <br>
+                <button onclick="S('S0')" type="button" class="btn btn-danger btn-lg ">Leds Attente</button>
+                <button onclick="S('S1')" type="button" class="btn btn-danger btn-lg ">Leds Réponse</button>
+                <button onclick="S('S4')" type="button" class="btn btn-danger btn-lg ">Leds Verte</button>
+                <button onclick="S('S5')" type="button" class="btn btn-danger btn-lg ">Leds Rouge</button>
+                <button onclick="S('S9')" type="button" class="btn btn-danger btn-lg ">Leds Eteintes</button>
+            </div>
+
 		</div>
     </header>
 
@@ -51,10 +69,6 @@
                                 <button onclick="shutdown()" type="button" class="btn btn-danger btn-lg btn-block gros" >Eteindre</button>
                             </p>
                         </div>
-                    </div>
-
-                    <div class="col-md-3 widget">
-                    
                     </div>
 
                 </div>

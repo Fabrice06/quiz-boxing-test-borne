@@ -36,6 +36,7 @@ app.get('/health', (req, res) => {
     res.status(200).send();
 });
 
+
 //Listed for button up events on all gamepads
 gamepad.on("up", function(id, num){
     txt = "BOUTON";
@@ -75,6 +76,26 @@ sockets.on('connection', function (socket) {
     socket.on('shutdown', function(){
         shutdownServer();
         console.log('ShutDown');
+    })
+    socket.on('S0', function(){
+        ws281x.animIdle();
+        console.log('S0');
+    })
+    socket.on('S1', function(){
+        ws281x.animWait();
+        console.log('S1');
+    })
+    socket.on('S4', function(){
+        ws281x.solidGreen();
+        console.log('S4');
+    })
+    socket.on('S5', function(){
+        ws281x.solidRed();
+        console.log('S5');
+    })
+    socket.on('S9', function(){
+        ws281x.solidBlack();
+        console.log('S9');
     })
 })
 
